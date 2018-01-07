@@ -2,11 +2,16 @@ package kk.springframework.di;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import kk.springframework.di.controllers.GreetingController;
 
 @SpringBootApplication
 public class DiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DiApplication.class, args);
+		ApplicationContext ctx = SpringApplication.run(DiApplication.class, args);
+		GreetingController controller = (GreetingController) ctx.getBean("greetingController");
+		controller.sayHello();
 	}
 }
