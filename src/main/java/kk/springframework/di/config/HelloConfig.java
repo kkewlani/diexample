@@ -1,22 +1,20 @@
 package kk.springframework.di.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
-
-import kk.springframework.di.services.HelloWorldService;
-import kk.springframework.di.services.HelloWorldServiceFactory;
 
 @Configuration
 public class HelloConfig {
+
+    // All the beans have been moved to spring-config xml file
+/*
 
     @Bean
     public HelloWorldServiceFactory helloWorldServiceFactory() {
         return new HelloWorldServiceFactory();
     }
+*/
 
-    @Bean
+    /*@Bean
     @Profile({ "default", "english" })
     @Primary
     public HelloWorldService helloWorldServiceEnglish(HelloWorldServiceFactory factory) {
@@ -28,9 +26,9 @@ public class HelloConfig {
     @Primary
     public HelloWorldService helloWorldServiceSpanish(HelloWorldServiceFactory factory) {
         return factory.createHelloWorldService("es");
-    }
+    }*/
 
-    @Bean("french")
+    /*@Bean("french")
     public HelloWorldService helloWorldServiceFrench(HelloWorldServiceFactory factory) {
         return factory.createHelloWorldService("fr");
     }
@@ -48,5 +46,5 @@ public class HelloConfig {
     @Bean
     public HelloWorldService helloWorldServiceRussian(HelloWorldServiceFactory factory) {
         return factory.createHelloWorldService("ru");
-    }
+    }*/
 }

@@ -1,31 +1,28 @@
 package kk.springframework.di.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
-
 import kk.springframework.di.services.HelloWorldService;
 
-@Controller
+//@Controller - added in the spring xml config file
+// Removed all the annotations as planning to use spring xml config
 public class GreetingController {
 
     private HelloWorldService helloWorldService;
     private HelloWorldService helloWorldServiceGerman;
     private HelloWorldService helloWorldServiceFrench;
 
-    @Autowired // injected by bean type
+    //@Autowired // injected by bean type
     public void setHelloWorldService(HelloWorldService helloWorldService) {
         this.helloWorldService = helloWorldService;
     }
 
-    @Autowired
-    @Qualifier("helloWorldServiceGerman") // injected by method name
+    //@Autowired
+    //@Qualifier("helloWorldServiceGerman") // injected by method name
     public void setHelloWorldServiceGerman(HelloWorldService helloWorldServiceGerman) {
         this.helloWorldServiceGerman = helloWorldServiceGerman;
     }
 
-    @Autowired
-    @Qualifier("french") // injected by custom name
+    //@Autowired
+    //@Qualifier("french") // injected by custom name
     public void setHelloWorldServiceFrench(HelloWorldService helloWorldServiceFrench) {
         this.helloWorldServiceFrench = helloWorldServiceFrench;
     }

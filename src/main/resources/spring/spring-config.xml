@@ -5,5 +5,33 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="kk.springframework"/>
+    <bean id="greetingController" class="kk.springframework.di.controllers.GreetingController">
+        <property name="helloWorldService" ref="helloWorldServiceDefault" />
+        <property name="helloWorldServiceFrench" ref="french" />
+        <property name="helloWorldServiceGerman" ref="helloWorldServiceGerman" />
+    </bean>
+    <bean id="helloWorldServiceFactory" class="kk.springframework.di.services.HelloWorldServiceFactory"/>
+    <bean id="french" factory-bean="helloWorldServiceFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="fr"/>
+    </bean>
+    <bean id="helloWorldServiceGerman" factory-bean="helloWorldServiceFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="de"/>
+    </bean>
+    <bean id="helloWorldServicePolish" factory-bean="helloWorldServiceFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="pl"/>
+    </bean>
+    <bean id="helloWorldServiceRussian" factory-bean="helloWorldServiceFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="ru"/>
+    </bean>
 
+    <beans profile="english">
+        <bean id="helloWorldServiceDefault" factory-bean="helloWorldServiceFactory" factory-method="createHelloWorldService" primary="true">
+            <constructor-arg value="en"/>
+        </bean>
+    </beans>
+    <beans profile="spanish">
+        <bean id="helloWorldServiceDefault" factory-bean="helloWorldServiceFactory" factory-method="createHelloWorldService" primary="true">
+            <constructor-arg value="en"/>
+        </bean>
+    </beans>
 </beans>
